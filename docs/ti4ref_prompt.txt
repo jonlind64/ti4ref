@@ -1,0 +1,381 @@
+Build a complete local website in the currently open project folder.
+
+## Goal
+
+Create a fast, mobile-friendly rules reference website for the board game
+“Twilight Imperium: Fourth Edition”.
+
+The website should be inspired by the structure and usability of:
+
+https://legionquickguide.com/
+
+Do not copy that website’s source code, text, branding, images, or visual design.
+Use it only as a functional reference for:
+
+- an alphabetically organized rules glossary
+- quick navigation during play
+- anchor links to individual topics
+- links between related topics
+- a compact, readable layout
+- fast client-side search
+
+The finished website must run locally from the current project folder.
+
+## Primary rules source
+
+Use this official Fantasy Flight Games Rules Reference PDF as the source:
+
+https://images-cdn.fantasyflightgames.com/filer_public/c2/69/c269b9e2-8d9a-420b-a807-2b164dd54977/ti-k0289_rules_referencecompressed.pdf
+
+This is the base-game Twilight Imperium: Fourth Edition Rules Reference.
+Do not silently mix in rules from Prophecy of Kings, later expansions, fan wikis,
+community rulings, or other editions.
+
+Download the PDF into an appropriate source or reference folder if needed.
+
+## First inspect the existing project
+
+Before writing code:
+
+1. Inspect the current project folder.
+2. Determine whether it already contains a framework, package manager,
+   build system, linting setup, or coding conventions.
+3. Preserve and extend the existing setup when reasonable.
+4. If the folder is effectively empty, create a lightweight modern web project.
+5. Prefer the simplest maintainable solution. A static site or small client-side
+   application is sufficient; no backend or database is required.
+
+Do not stop after creating a plan. Implement and test the full solution.
+
+## Content extraction
+
+Extract the glossary topics from the official Rules Reference.
+
+The PDF glossary consists of numbered top-level topics such as:
+
+- Abilities
+- Action Cards
+- Action Phase
+- Active Player
+- Active System
+- Adjacency
+- Agenda Card
+- Agenda Phase
+- Anti-Fighter Barrage
+- and so on
+
+For every top-level glossary topic, create a structured entry containing:
+
+- topic number
+- title
+- stable slug
+- introductory description
+- numbered rules and sub-rules
+- bullet points
+- examples or notes where present
+- subsection headings where present
+- related topics
+- source page number or page range
+- original paragraph identifiers such as 1.1, 1.2, 38.1, etc.
+
+Preserve the meaning, numbering, hierarchy, and rule terminology accurately.
+
+Do not use OCR unless ordinary PDF text extraction is insufficient.
+The PDF appears to contain extractable text.
+
+Store the extracted and reviewed rules as structured local data, preferably JSON,
+TypeScript, Markdown, or another human-editable format. The application should
+not fetch or parse the PDF at runtime.
+
+Create a repeatable extraction or import script where practical. Document how to
+rerun it.
+
+Because the source is copyrighted, avoid unrelated artwork and long decorative
+passages. Include only the rule text needed for a functional reference, retain
+source attribution, and make clear that this is an unofficial fan-made aid.
+
+## Required interface
+
+### Header
+
+Create a compact sticky header containing:
+
+- site title, for example “TI4 Quick Guide”
+- subtitle identifying it as a Twilight Imperium Fourth Edition rules reference
+- search field
+- button to clear the search
+- optional light/dark theme control
+
+Do not use official logos unless they are clearly permitted.
+Use an original text-based identity.
+
+### Introductory information
+
+Near the top, include a short notice such as:
+
+“An unofficial, fan-made quick reference for Twilight Imperium: Fourth Edition.
+Rules are based on the official Fantasy Flight Games Rules Reference. This site
+is not affiliated with or endorsed by Fantasy Flight Games or Asmodee.”
+
+Include a link to the official PDF.
+
+Also display:
+
+- rules source
+- edition
+- source document version or publication information when determinable
+- date on which the local data was generated
+- whether the content covers base game only
+
+### Alphabetical navigation
+
+Provide an A–Z navigation bar.
+
+Requirements:
+
+- letters with entries link to their section
+- letters without entries appear disabled
+- navigation remains usable on narrow mobile screens
+- selecting a letter scrolls smoothly to that section
+- URLs and browser history should remain useful
+
+### Glossary layout
+
+Display all entries alphabetically and group them under letter headings.
+
+Each topic must include:
+
+- linked heading
+- original topic number
+- rule text with correct paragraph numbering
+- readable lists and nested lists
+- related-topic links
+- source page reference
+- copy-link control
+- stable anchor URL
+
+Related topics must link directly to the corresponding entry.
+
+When a related topic cannot be resolved automatically, flag it in validation
+output rather than silently linking incorrectly.
+
+### Search
+
+Implement instant client-side search.
+
+Search must match:
+
+- topic title
+- alternate terms from the PDF index
+- paragraph text
+- related-topic names
+- rule numbers such as “38.2”
+
+Required behavior:
+
+- results update as the user types
+- search is case-insensitive
+- partial words work
+- punctuation does not prevent useful matches
+- matching topics are shown clearly
+- matching text may be highlighted
+- a useful empty-state message appears when nothing matches
+- pressing Escape clears the query
+- the search query can be represented in the URL so a result can be shared
+- clearing the query restores the alphabetical overview
+
+### Deep links
+
+Support links such as:
+
+- /#abilities
+- /#space-combat
+- /#38.2
+
+A topic URL should scroll to the correct entry and visually emphasize it briefly.
+
+Where paragraph-level links are practical, make paragraph identifiers directly
+linkable.
+
+### Responsive behavior
+
+The site must work well on:
+
+- iPhone-sized screens
+- iPad-sized screens
+- desktop browsers
+
+Prioritize use at a physical gaming table:
+
+- large enough touch targets
+- high contrast
+- compact but readable typography
+- minimal animation
+- no layout shifts
+- no unnecessary dialogs
+- no advertisements
+- no login
+- no analytics or tracking
+
+## Visual direction
+
+Create an original visual design inspired by space opera and tabletop reference
+materials, without copying Fantasy Flight Games artwork or the Legion Quick
+Guide appearance.
+
+Suggested direction:
+
+- dark navy or near-black background
+- warm ivory content surfaces
+- restrained cyan or gold accents
+- crisp typography
+- subtle geometric or star-field details created with CSS
+- strong focus on readability
+
+Do not depend on externally hosted images.
+Prefer CSS, inline SVG, or locally created generic decorative assets.
+
+Respect prefers-reduced-motion.
+
+## Data model
+
+Create a clear schema along these lines:
+
+{
+  "number": "38",
+  "title": "Ground Combat",
+  "slug": "ground-combat",
+  "aliases": [],
+  "sourcePages": [12],
+  "introduction": "...",
+  "sections": [
+    {
+      "id": "38.1",
+      "content": "...",
+      "children": []
+    }
+  ],
+  "relatedTopics": [
+    {
+      "title": "Invasion",
+      "slug": "invasion"
+    }
+  ]
+}
+
+Adapt the schema where needed, but keep content separate from presentation.
+
+## Parsing and validation
+
+Add scripts or tests that validate at least the following:
+
+- every entry has a unique slug
+- topics are alphabetically sortable
+- paragraph IDs are unique
+- all internal related-topic links resolve
+- all source-page references are valid
+- no glossary entry was accidentally omitted
+- topic numbering follows the source document
+- the index aliases point to real topics or paragraphs
+- generated data can be loaded by the application
+
+Use the PDF index as a secondary validation source, not as the only content source.
+
+Generate a small validation report listing:
+
+- number of top-level topics
+- number of rule paragraphs
+- unresolved cross-references
+- duplicate slugs or IDs
+- parsing warnings
+
+## Accessibility
+
+Implement:
+
+- semantic HTML
+- visible keyboard focus
+- proper heading hierarchy
+- labelled search input
+- keyboard-accessible controls
+- sufficient contrast
+- skip link
+- ARIA only where normal semantic HTML is insufficient
+
+## Technical quality
+
+Requirements:
+
+- no runtime dependency on the source PDF
+- no backend
+- no external API keys
+- no unnecessary large dependencies
+- no broken links
+- no console errors
+- deterministic local build
+- production build succeeds
+- linting succeeds
+- tests succeed
+
+If a JavaScript framework is already present, use it.
+If choosing from scratch, prefer a simple maintainable TypeScript solution such
+as Vite with React, Preact, or vanilla TypeScript. Do not introduce a heavy
+framework without a clear reason.
+
+## Documentation
+
+Create or update README.md with:
+
+- project purpose
+- technology used
+- install command
+- local development command
+- production build command
+- test and validation commands
+- project structure
+- how the PDF content was extracted
+- how to update the rules data from a newer source document
+- known limitations
+- copyright, trademark, attribution, and non-affiliation notice
+
+## Testing
+
+Run the application locally and verify:
+
+1. the home page loads
+2. alphabet links work
+3. search works
+4. related-topic links work
+5. direct topic links work after a fresh page load
+6. paragraph links work where implemented
+7. mobile layout works
+8. the production build succeeds
+9. lint and tests succeed
+10. the browser console contains no errors
+
+Use any available browser or screenshot tooling to inspect the result visually.
+
+## Completion criteria
+
+Do not finish with placeholders, a mock-up, or only a handful of sample entries.
+
+The project is complete only when:
+
+- the full base-game glossary from the supplied PDF is represented
+- the data has been validated
+- the site is functional locally
+- search and internal links work
+- the layout is responsive
+- README instructions are accurate
+- build, linting, validation, and tests pass
+
+At the end, report:
+
+- what you built
+- the chosen stack
+- the number of imported glossary topics and paragraphs
+- files added or changed
+- commands run
+- test/build results
+- any unresolved extraction warnings
+- the exact command I should run to start the site locally
