@@ -486,7 +486,7 @@
       "sourcePages": [
         6
       ],
-      "introduction": "Agenda cards represent galactic laws and policies. During each agenda phase, players cast votes for specific outcomes on two agenda cards. CCOOLLOONNIIAALL RREEDDIISSTTRRIIBBUUTTIIOONN DIRECTIVE Elect Non-Home Planet Other Than Mecatol Rex Destroy each unit on the elected planet. Then, the player who controls that planet chooses 1 player with the fewest victory points; that player may place 1 infantry from his reinforcements on the elected planet.",
+      "introduction": "Agenda cards represent galactic laws and policies. During each agenda phase, players cast votes for specific outcomes on two agenda cards.",
       "sections": [
         {
           "id": "7.1",
@@ -3145,7 +3145,7 @@
           "id": "55.2",
           "bullets": [],
           "sourcePage": 18,
-          "content": "A planet’s influence is indicated by the resou u rc n e d s e a rd n e d v o e n lo ly p e ru d d, i i n m d e u n s t t a ri r e y s,. often lower-right value that is surrounded by a blue border."
+          "content": "A planet’s influence is indicated by the lower-right value that is surrounded by a blue border."
         },
         {
           "id": "55.3",
@@ -4312,13 +4312,13 @@
       "sourcePages": [
         24
       ],
-      "introduction": "Strategy cards determine initiative order TTTTTEEEEECCCCCHHHHHNNNNNOOOOOLLLLLOOOOOGGGGGYYYYY 7 and provide each player with a powerful PPPPRRRRIIIIMMMMAAAARRRRYYYY AAAABBBBIIIILLLLIIIITTTTYYYY:::: ability that he can use one time during the ✦✦✦✦✦RReesseeaarrcchh 11 tteecchhnnoollooggyy.. action phase. ✦✦✦✦✦✦✦SSppeenndd 66 rreessoouurrcceess ttoo rreesseeaarrcchh 1 technology.",
+      "introduction": "Strategy cards determine initiative order and provide each player with a powerful ability that he can use one time during the action phase.",
       "sections": [
         {
           "id": "72.1",
           "bullets": [],
           "sourcePage": 24,
-          "content": "During the strategy phase, each player chooses a strategy card from the common play area and places it in his SSSEEECCCOOONNNDDDAAARRRYYY AAABBBIIILLLIIITTTYYY::: ✦✦SSppeenndd 11 ttookkeenn ffrroomm play area faceup. yyoouurr ssttrraatteeggyy ppooooll aanndd 4 resources to research 11 tteecchhnnoollooggyy.."
+          "content": "During the strategy phase, each player chooses a strategy card from the common play area and places it in his play area faceup."
         },
         {
           "id": "72.2",
@@ -4796,7 +4796,7 @@
       "sourcePages": [
         26
       ],
-      "introduction": "Technology cards allow players to GRAVITON LASER SYSTEM upgrade units and acquire powerful You may exhaust this card before 1 or more of your units use SPACE CANNON; abilities. h as it s s i g p n ro ed d u to ce n d o b n y -fi t g h h o t s e e r u s n h i i t p s s m if u a s b t l b e. e",
+      "introduction": "Technology cards allow players to upgrade units and acquire powerful abilities.",
       "sections": [
         {
           "id": "79.1",
